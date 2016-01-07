@@ -1,22 +1,13 @@
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Klimatyzacja implements Uslugi{
+public class Klimatyzacja {
 
 	private Boolean wlaczona;
 	private double temperatura;
 	
 	public Klimatyzacja() {
 		temperatura=18.0;
-		wlaczona=false;
-	}
-	@Override
-	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
-		wlaczona=true;
-	}
-
-	@Override
-	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczona=false;
 	}
 	

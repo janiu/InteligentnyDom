@@ -1,5 +1,4 @@
 
-
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -9,15 +8,13 @@ public class Zabezpieczenie {
 
 	Uslugi uslugi;
 	String pin;
-	
-	
+
 	public Zabezpieczenie() {
-		pin="1234";
+		pin = "1234";
 	}
 
-
 	public void wlaczFunkcje(List<JPanel> panele, List<JLabel> label, List<Uslugi> uslugi) {
-		
+
 		uslugi.get(0).wylaczFunkcje(panele.get(0), label.get(0), null);
 		uslugi.get(1).wylaczFunkcje(panele.get(0), label.get(1), Pokoj.SALON);
 		uslugi.get(1).wylaczFunkcje(panele.get(1), label.get(2), Pokoj.POKOJ);
@@ -26,26 +23,24 @@ public class Zabezpieczenie {
 		uslugi.get(1).wylaczFunkcje(panele.get(3), label.get(5), Pokoj.LAZIENKA);
 		uslugi.get(3).wylaczFunkcje(panele.get(4), label.get(6), null);
 		uslugi.get(4).wlaczFunkcje(panele.get(4), label.get(7), null);
-		
-		for(JLabel l: label)
+
+		for (JLabel l : label)
 			l.setEnabled(false);
 		label.get(7).setEnabled(true);
-		
+
 	}
 
-	
 	public void wylaczFunkcje(List<JPanel> panele, List<JLabel> label, List<Uslugi> uslugi) {
-		for(JLabel l: label)
+		for (JLabel l : label)
 			l.setEnabled(true);
 		uslugi.get(3).wlaczFunkcje(panele.get(4), label.get(6), null);
 		uslugi.get(4).wylaczFunkcje(panele.get(4), label.get(7), null);
 	}
-	
-	public boolean sprawdzPin(String pin){
-		if(this.pin.equals(pin)){
+
+	public boolean sprawdzPin(String pin) {
+		if (this.pin.equals(pin)) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}

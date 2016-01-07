@@ -31,34 +31,34 @@ public class Oswietlenie implements Uslugi {
 		if (nazwa == Pokoj.POKOJ) {
 			if (wlPokoj == true) {
 				label.setIcon(new ImageIcon("img/zarowka.png"));
-				wlPokoj=false;
+				wlPokoj = false;
 			} else {
 				label.setIcon(new ImageIcon("img/zarowka2.png"));
-				wlPokoj=true;
+				wlPokoj = true;
 			}
 		} else if (nazwa == Pokoj.SALON) {
 			if (wlSalon == true) {
 				label.setIcon(new ImageIcon("img/zarowka.png"));
-				wlSalon=false;
+				wlSalon = false;
 			} else {
 				label.setIcon(new ImageIcon("img/zarowka2.png"));
-				wlSalon=true;
+				wlSalon = true;
 			}
 		} else if (nazwa == Pokoj.KUCHNIA) {
 			if (wlKuchnia == true) {
 				label.setIcon(new ImageIcon("img/zarowka.png"));
-				wlKuchnia=false;
+				wlKuchnia = false;
 			} else {
 				label.setIcon(new ImageIcon("img/zarowka2.png"));
-				wlKuchnia=true;
+				wlKuchnia = true;
 			}
 		} else if (nazwa == Pokoj.LAZIENKA) {
 			if (wlLazienka == true) {
 				label.setIcon(new ImageIcon("img/zarowka.png"));
-				wlLazienka=false;
+				wlLazienka = false;
 			} else {
 				label.setIcon(new ImageIcon("img/zarowka2.png"));
-				wlLazienka=true;
+				wlLazienka = true;
 			}
 		}
 		panel.add(label);
