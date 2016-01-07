@@ -1,3 +1,6 @@
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Tv implements Uslugi{
 
@@ -5,14 +8,25 @@ public class Tv implements Uslugi{
 	private int kanal;
 	private int glosnosc;
 	
+	public Tv() {
+		wlaczony=false;
+		kanal=1;
+		glosnosc=15;
+	}
+	
 	@Override
-	public void wlaczFunkcje() {
-		wlaczony=true;
+	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
+			wlaczony=true;
+			label.setIcon(new ImageIcon("img/tvOn.png"));
+			panel.add(label);
+		
 	}
 
 	@Override
-	public void wylaczFunkcje() {
+	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony=false;
+		label.setIcon(new ImageIcon("img/tvOff.png"));
+		panel.add(label);
 	}
 	
 	public void ustawKanal(int kanal){

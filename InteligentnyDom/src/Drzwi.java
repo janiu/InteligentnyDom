@@ -1,23 +1,32 @@
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Drzwi implements Uslugi{
-	private Boolean zamkniete;
+	private Boolean otwarte;
+public Drzwi() {
+	otwarte=true;
+}
+	@Override
+	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
+			otwarte=true;
+			label.setIcon(new ImageIcon("img/otwarte.png"));
+			panel.add(label);
+	}
 
 	@Override
-	public void wlaczFunkcje() {
-			zamkniete=true;
+	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
+			otwarte=false;
+			label.setIcon(new ImageIcon("img/zamkniete.png"));
+			panel.add(label);			
 	}
 
-	@Override
-	public void wylaczFunkcje() {
-			zamkniete=false;
+	public Boolean getOtwarte() {
+		return otwarte;
 	}
 
-	public Boolean getZamkniete() {
-		return zamkniete;
-	}
-
-	public void setZamkniete(Boolean zamkniete) {
-		this.zamkniete = zamkniete;
+	public void setOtwarte(Boolean zamkniete) {
+		this.otwarte = zamkniete;
 	}
 	
 }

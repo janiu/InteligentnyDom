@@ -1,32 +1,27 @@
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Klimatyzacja implements Uslugi{
 
 	private Boolean wlaczona;
-	private double tempPokoj;
-	private double tempSalon;
-	private double tempKuchnia;
-	private double tempLazienka;
+	private double temperatura;
 	
+	public Klimatyzacja() {
+		temperatura=18.0;
+		wlaczona=false;
+	}
 	@Override
-	public void wlaczFunkcje() {
+	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczona=true;
 	}
 
 	@Override
-	public void wylaczFunkcje() {
+	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczona=false;
 	}
 	
-	public void ustawTemperature(Pokoj nazwa, double wartosc){
-		if(nazwa==Pokoj.POKOJ)
-			tempPokoj=wartosc;
-		else if(nazwa==Pokoj.SALON)
-			tempSalon=wartosc;
-		else if(nazwa==Pokoj.KUCHNIA)
-			tempKuchnia=wartosc;
-		else if(nazwa==Pokoj.LAZIENKA)
-			tempLazienka=wartosc;
-		
+	public void ustawTemperature( double temperatura){
+		this.temperatura=temperatura;
 	}
 
 	public Boolean getWlaczona() {
@@ -36,37 +31,9 @@ public class Klimatyzacja implements Uslugi{
 	public void setWlaczona(Boolean wlaczona) {
 		this.wlaczona = wlaczona;
 	}
-
-	public double getTempPokoj() {
-		return tempPokoj;
+	public double getTemperatura() {
+		return temperatura;
 	}
 
-	public void setTempPokoj(double tempPokoj) {
-		this.tempPokoj = tempPokoj;
-	}
-
-	public double getTempSalon() {
-		return tempSalon;
-	}
-
-	public void setTempSalon(double tempSalon) {
-		this.tempSalon = tempSalon;
-	}
-
-	public double getTempKuchnia() {
-		return tempKuchnia;
-	}
-
-	public void setTempKuchnia(double tempKuchnia) {
-		this.tempKuchnia = tempKuchnia;
-	}
-
-	public double getTempLazienka() {
-		return tempLazienka;
-	}
-
-	public void setTempLazienka(double tempLazienka) {
-		this.tempLazienka = tempLazienka;
-	}	
 
 }
