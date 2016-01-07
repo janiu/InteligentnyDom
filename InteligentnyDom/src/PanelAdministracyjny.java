@@ -1,39 +1,28 @@
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.FlowLayout;
-import java.awt.Color;
-import java.awt.Component;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSlider;
-import javax.swing.event.ChangeListener;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.event.ChangeListener;
+import java.awt.Font;
 
 public class PanelAdministracyjny {
 
@@ -58,6 +47,7 @@ public class PanelAdministracyjny {
 	/**
 	 * Create the application.
 	 */
+	
 	Oswietlenie oswietlenie = new Oswietlenie(false,false,false,false);
 	Tv tv = new Tv();
 	Drzwi drzwi = new Drzwi();
@@ -65,6 +55,9 @@ public class PanelAdministracyjny {
 	Alarm alarm=new Alarm();
 	Zabezpieczenie zabezpieczenie=new Zabezpieczenie();
 	Klimatyzacja klimatyzacja=new Klimatyzacja();
+	JLabel labelTemperatura=labelTemperatura = new JLabel("");
+	Temperatura temperatura=new Temperatura(klimatyzacja, labelTemperatura);
+	private JPasswordField Pin;
 
 	
 	
@@ -84,6 +77,8 @@ public class PanelAdministracyjny {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		temperatura.start();
+		
 		frame=new JFrame();
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setBounds(0, 0, 896, 781);
@@ -241,7 +236,7 @@ public class PanelAdministracyjny {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(700, 0, 100, 200);
+		panel.setBounds(736, 0, 123, 429);
 		frame.getContentPane().add(panel);
 		
 		
@@ -306,6 +301,32 @@ public class PanelAdministracyjny {
 		label.add(alarmLabel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel.add(btnZabezpiecz);
+		JButton btnOdbezpiecz = new JButton("Odbezpiecz");
+		btnOdbezpiecz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(zabezpieczenie.sprawdzPin(Pin.getText())){
+					zabezpieczenie.wylaczFunkcje(panele, label, uslugi);
+					
+				}
+				else{
+					JOptionPane.showMessageDialog(frame, "Bledny PIN wlamywaczu");
+				}
+				
+				Pin.setText("");
+			}
+		});
+		panel.add(btnOdbezpiecz);
+		
+
+		
+		Pin = new JPasswordField();
+		panel.add(Pin);
+		Pin.setColumns(10);
+		
+		 
+		labelTemperatura.setForeground(new Color(51, 204, 0));
+		labelTemperatura.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		panel.add(labelTemperatura);
 		panel.add(alarmLabel);
 		panel.add(drzwiLabel);
 	}
