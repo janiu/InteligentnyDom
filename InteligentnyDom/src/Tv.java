@@ -18,7 +18,7 @@ public class Tv implements Uslugi {
 	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony = true;
 		label.setIcon(new ImageIcon("img/tvOn.png"));
-		panel.add(label);
+		//panel.add(label);
 
 	}
 
@@ -26,7 +26,7 @@ public class Tv implements Uslugi {
 	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony = false;
 		label.setIcon(new ImageIcon("img/tvOff.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 	public void ustawKanal(int kanal) {

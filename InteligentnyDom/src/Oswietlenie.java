@@ -24,7 +24,7 @@ public class Oswietlenie implements Uslugi {
 		wlKuchnia = false;
 		wlLazienka = false;
 		label.setIcon(new ImageIcon("img/zarowka.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 	public void ustawOswietlenie(JPanel panel, JLabel label, Pokoj nazwa) {
@@ -61,7 +61,7 @@ public class Oswietlenie implements Uslugi {
 				wlLazienka = true;
 			}
 		}
-		panel.add(label);
+	//	panel.add(label);
 	}
 
 	public Oswietlenie(boolean wlPokoj, boolean wlSalon, boolean wlLazienka, boolean wlKuchnia) {

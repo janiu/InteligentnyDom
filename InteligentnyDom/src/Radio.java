@@ -17,14 +17,14 @@ public class Radio implements Uslugi {
 	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony = true;
 		label.setIcon(new ImageIcon("img/radioOn.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 	@Override
 	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony = false;
 		label.setIcon(new ImageIcon("img/radioOff.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 	public void ustawKanal(double czestotliwosc) {

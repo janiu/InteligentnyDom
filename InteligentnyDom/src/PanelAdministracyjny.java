@@ -22,7 +22,10 @@ import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 import java.awt.Font;
+import java.io.File;
+import javax.swing.UIManager;
 
 public class PanelAdministracyjny {
 
@@ -70,6 +73,7 @@ public class PanelAdministracyjny {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		temperatura.start();
 
 		frame = new JFrame();
@@ -79,12 +83,13 @@ public class PanelAdministracyjny {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JPanel pokoj = new JPanel();
-		pokoj.setBackground(Color.YELLOW);
+		final JPanel pokoj = new JPanel();
+		pokoj.setBackground(Color.DARK_GRAY);
 		pokoj.setBounds(350, 0, 350, 350);
+		
 		frame.getContentPane().add(pokoj);
 
-		JLabel zarowkaPokoj = new JLabel("");
+		final JLabel zarowkaPokoj = new JLabel("");
 		zarowkaPokoj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -92,9 +97,13 @@ public class PanelAdministracyjny {
 			}
 		});
 		zarowkaPokoj.setIcon(new ImageIcon("img/zarowka.png"));
+		
+		
+		
 		pokoj.add(zarowkaPokoj);
+		
 
-		JLabel radioLabel = new JLabel("");
+		final JLabel radioLabel = new JLabel("");
 		radioLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -108,7 +117,7 @@ public class PanelAdministracyjny {
 		pokoj.add(radioLabel);
 
 		// ******************* slider do radia
-		JSlider sliderRadioCzest = new JSlider();
+		final JSlider sliderRadioCzest = new JSlider();
 
 		sliderRadioCzest.setMaximum(110);
 		sliderRadioCzest.setPaintTrack(true);
@@ -134,11 +143,11 @@ public class PanelAdministracyjny {
 		});
 		// *****************************************
 
-		JPanel salon = new JPanel();
-		salon.setBackground(Color.BLUE);
+		final JPanel salon = new JPanel();
+		salon.setBackground(Color.DARK_GRAY);
 		salon.setBounds(0, 0, 350, 350);
 		frame.getContentPane().add(salon);
-		JLabel zarowkaSalon = new JLabel("");
+		final JLabel zarowkaSalon = new JLabel("");
 		zarowkaSalon.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -149,7 +158,7 @@ public class PanelAdministracyjny {
 		zarowkaSalon.setIcon(new ImageIcon("img/zarowka.png"));
 		salon.add(zarowkaSalon);
 
-		JLabel tvLabel = new JLabel("");
+		final JLabel tvLabel = new JLabel("");
 		tvLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		tvLabel.setIcon(new ImageIcon("img/tvOff.png"));
 
@@ -166,7 +175,7 @@ public class PanelAdministracyjny {
 		salon.add(tvLabel);
 
 		// ******************* slider do tv kanalow
-		JSlider sliderTvKan = new JSlider();
+		final JSlider sliderTvKan = new JSlider();
 
 		sliderTvKan.setMaximum(100);
 		sliderTvKan.setPaintTrack(true);
@@ -192,55 +201,37 @@ public class PanelAdministracyjny {
 		});
 		// *****************************************
 
-		JPanel lazienka = new JPanel();
-		lazienka.setBackground(Color.GREEN);
+		final JPanel lazienka = new JPanel();
+		lazienka.setBackground(Color.DARK_GRAY);
 		lazienka.setBounds(0, 350, 350, 350);
 		frame.getContentPane().add(lazienka);
 
-		JLabel zarowkaLazienka = new JLabel("");
-		zarowkaLazienka.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				oswietlenie.ustawOswietlenie(lazienka, zarowkaLazienka, Pokoj.LAZIENKA);
-			}
-		});
-		zarowkaLazienka.setIcon(new ImageIcon("img/zarowka.png"));
-		lazienka.add(zarowkaLazienka);
-
-		JPanel kuchnia = new JPanel();
-		kuchnia.setBackground(Color.PINK);
+		 final JPanel kuchnia = new JPanel();
+		kuchnia.setBackground(Color.DARK_GRAY);
 		kuchnia.setBounds(350, 350, 350, 350);
 		frame.getContentPane().add(kuchnia);
 
-		JLabel zarowkaKuchnia = new JLabel("");
-		zarowkaKuchnia.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				oswietlenie.ustawOswietlenie(kuchnia, zarowkaKuchnia, Pokoj.KUCHNIA);
-			}
-		});
-		zarowkaKuchnia.setIcon(new ImageIcon("img/zarowka.png"));
-		kuchnia.add(zarowkaKuchnia);
-
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
+		panel.setBackground(UIManager.getColor("Button.background"));
 		panel.setBounds(736, 0, 123, 429);
 		frame.getContentPane().add(panel);
 
 		// ****************************************
-		List<JPanel> panele = new ArrayList<>();
-		List<JLabel> label = new ArrayList<>();
-		List<Uslugi> uslugi = new ArrayList<>();
+		final List<JPanel> panele = new ArrayList<>();
+		final List<JLabel> label = new ArrayList<>();
+		final List<Uslugi> uslugi = new ArrayList<>();
 		panele.add(salon);
 		panele.add(pokoj);
 		panele.add(kuchnia);
 		panele.add(lazienka);
 		panele.add(panel);
+		
 		label.add(tvLabel);
 		label.add(zarowkaSalon);
 		label.add(zarowkaPokoj);
 		label.add(radioLabel);
-		label.add(zarowkaKuchnia);
-		label.add(zarowkaLazienka);
+		
+		
 		uslugi.add(tv);
 		uslugi.add(oswietlenie);
 		uslugi.add(radio);
@@ -265,7 +256,7 @@ public class PanelAdministracyjny {
 		});
 
 		// *****************************************
-		JLabel drzwiLabel = new JLabel("");
+		final JLabel drzwiLabel = new JLabel("");
 		drzwiLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -303,10 +294,48 @@ public class PanelAdministracyjny {
 		panel.add(Pin);
 		Pin.setColumns(10);
 
+		
+		panel.add(alarmLabel);
+		panel.add(drzwiLabel);
+		
+		
+		ImagePane pokojPane=new ImagePane(new File("img/pokoj.png"), pokoj.getWidth(), pokoj.getHeight());
+		pokoj.add(pokojPane);
+		
+		ImagePane salonPane=new ImagePane(new File("img/salon.png"), pokoj.getWidth(), pokoj.getHeight());
+		salon.add(salonPane);
+		
+				final JLabel zarowkaKuchnia = new JLabel("");
+				kuchnia.add(zarowkaKuchnia);
+				zarowkaKuchnia.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						oswietlenie.ustawOswietlenie(kuchnia, zarowkaKuchnia, Pokoj.KUCHNIA);
+					}
+				});
+				zarowkaKuchnia.setIcon(new ImageIcon("img/zarowka.png"));
+				label.add(zarowkaKuchnia);
+		
+		ImagePane kuchniaPane=new ImagePane(new File("img/kuchnia.png"), pokoj.getWidth(), pokoj.getHeight());
+		kuchnia.add(kuchniaPane);
+		
+				final JLabel zarowkaLazienka = new JLabel("");
+				lazienka.add(zarowkaLazienka);
+				zarowkaLazienka.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						oswietlenie.ustawOswietlenie(lazienka, zarowkaLazienka, Pokoj.LAZIENKA);
+					}
+				});
+				zarowkaLazienka.setIcon(new ImageIcon("img/zarowka.png"));
+				label.add(zarowkaLazienka);
+		
+		ImagePane lazienkaPane=new ImagePane(new File("img/lazienka.png"), pokoj.getWidth(), pokoj.getHeight());
+		lazienka.add(lazienkaPane);
+		
 		labelTemperatura.setForeground(new Color(51, 204, 0));
 		labelTemperatura.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(labelTemperatura);
-		panel.add(alarmLabel);
-		panel.add(drzwiLabel);
+		
 	}
 }

@@ -13,14 +13,14 @@ public class Drzwi implements Uslugi {
 	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		otwarte = true;
 		label.setIcon(new ImageIcon("img/otwarte.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 	@Override
 	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		otwarte = false;
 		label.setIcon(new ImageIcon("img/zamkniete.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 	public Boolean getOtwarte() {

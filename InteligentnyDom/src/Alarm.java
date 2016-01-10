@@ -14,14 +14,14 @@ public class Alarm implements Uslugi {
 	public void wlaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony = true;
 		label.setIcon(new ImageIcon("img/alarmOn.png"));
-		panel.add(label);
+	//	panel.add(label);
 	}
 
 	@Override
 	public void wylaczFunkcje(JPanel panel, JLabel label, Pokoj nazwa) {
 		wlaczony = false;
 		label.setIcon(new ImageIcon("img/alarmOff.png"));
-		panel.add(label);
+		//panel.add(label);
 	}
 
 }
