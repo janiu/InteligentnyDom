@@ -19,17 +19,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import java.awt.Font;
 import java.io.File;
+
 import javax.swing.UIManager;
 
 public class PanelAdministracyjny {
 
-	private JFrame frame;
+	public JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -58,8 +60,11 @@ public class PanelAdministracyjny {
 	Alarm alarm = new Alarm();
 	Zabezpieczenie zabezpieczenie = new Zabezpieczenie();
 	Klimatyzacja klimatyzacja = new Klimatyzacja();
-	JLabel labelTemperatura = labelTemperatura = new JLabel("");
+	JLabel   labelTemperatura = new JLabel("");
 	Temperatura temperatura = new Temperatura(klimatyzacja, labelTemperatura);
+	
+	JTextArea infoLabel;
+	PokazStan pokazStan;
 	private JPasswordField Pin;
 
 	public PanelAdministracyjny() {
@@ -74,11 +79,23 @@ public class PanelAdministracyjny {
 	 */
 	private void initialize() {
 		
-		temperatura.start();
-
+		
+		
+		
+		
 		frame = new JFrame();
+		
+		 infoLabel = new JTextArea("");
+			infoLabel.setBounds(880, 11, 200, 418);
+			frame.getContentPane().add(infoLabel);
+			
+		pokazStan=new PokazStan(this, infoLabel);
+		temperatura.start();
+		pokazStan.start();
+		
+		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setBounds(0, 0, 896, 781);
+		frame.setBounds(0, 0, 1124, 781);
 		// frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -336,6 +353,10 @@ public class PanelAdministracyjny {
 		labelTemperatura.setForeground(new Color(51, 204, 0));
 		labelTemperatura.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		panel.add(labelTemperatura);
+		
+		
+		
+		
 		
 	}
 }

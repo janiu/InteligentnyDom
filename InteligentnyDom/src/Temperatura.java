@@ -30,15 +30,34 @@ public class Temperatura extends Thread {
 	public void run() {
 		while (true) {
 
+			zmiana = 0.1 + (random.nextDouble() * (1.0 - 0.1));
+			
 			if (klimatyzacja.getTemperatura() >= 25.0) {
-				System.out.println("Wlaczam klime");
-				klimatyzacja.ustawTemperature(18.0);
+				
+				while(klimatyzacja.getTemperatura()>18.0)
+				{
+				klimatyzacja.setWlaczona(true);
+				
+				klimatyzacja.ustawTemperature(klimatyzacja.getTemperatura()-zmiana);
+				
+					try {
+						Thread.sleep(1500);
+					} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					}
+					
+					label.setText("Temp: " + df.format(klimatyzacja.getTemperatura()));
+				
+				}
 			}
 
-			zmiana = 0.1 + (random.nextDouble() * (1.0 - 0.1));
+			klimatyzacja.setWlaczona(false);
+			
+			
 
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1500);
 
 				label.setText("Temp: " + df.format(klimatyzacja.getTemperatura()));
 			} catch (InterruptedException e) {

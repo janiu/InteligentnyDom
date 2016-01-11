@@ -24,6 +24,7 @@ public class Oswietlenie implements Uslugi {
 		wlKuchnia = false;
 		wlLazienka = false;
 		label.setIcon(new ImageIcon("img/zarowka.png"));
+		
 		//panel.add(label);
 	}
 
